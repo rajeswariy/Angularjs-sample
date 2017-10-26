@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	  <title>Spring Boot - Angularjs Example</title>
+	  <meta charset="utf-8" />
+	  <meta name="viewport" content="width=device-width, initial-scale=1" />
+	  <!-- <script src="/js/angular.js"></script> -->
+	  <script src="/js/angular.min.js"></script>
+	 <!--  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script> -->
+	  <!--   <script src="/js/dirPagination.js"></script> -->
+	  <!-- <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" /> -->
+	   <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
+ <script src="/js/controller.js"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="Style.css" rel="stylesheet"/>	  
+</head>
+
+
+<body>
+<h3>AddCustomer</h3>
+
+<div  class="container" ng-app="app">
+ <div ng-controller="AddCustomerController">
+<form name="custform" ng-submit="createCustomer()">
+
+<table>
+<tr>
+<td>FirstName</td>
+<td><input type="text" name="first_name" class="form-control" ng-model="first_name" />
+</td></tr>
+
+<tr>
+<td>LastName</td>
+<td>
+<input type="text" name="last_name" class="form-control" ng-model="last_name" />
+</td></tr>
+
+<tr>
+<td>Birthday</td>
+<td>
+<input type="text" name="birthday" class="form-control" ng-model="birthday"/>
+</td></tr>
+
+<tr>
+<td>Email</td>
+<td>
+<input type="text" name="email" class="form-control" ng-model="email" />
+</td></tr>
+
+<tr>
+<td>Phone</td>
+<td>
+<input type="text" name="phone" class="phone" ng-model="phone" />
+</td></tr>
+
+<tr>
+<td>ZipCode</td>
+<td>
+<input type="text" name="zip_Code" class="form-control" ng-model="zip_Code" />
+</td>
+</tr>
+
+<tr>
+<td>NoOfPurchases</td>
+<td>
+<input type="text" name="numberof_Purchases" class="form-control" ng-model="numberof_Purchases" />
+</td>
+</tr>
+
+<tr>
+<td>Company</td>
+<td>
+<input type="text" name="company" class="form-control" ng-model="company" />
+</td>
+</tr>
+
+<tr>
+<td colspan="2"><button type="submit" class="btn btn-primary" >addcustomer</button> </td>
+</tr>
+</table>
+</form>
+<p>{{ResultMessage}}</p>
+</div>
+</div>
+</body>
+</html>

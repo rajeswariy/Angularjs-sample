@@ -1,0 +1,526 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	  <title>Spring Boot - Angularjs Example</title>
+	  <meta charset="utf-8" />
+	  <meta name="viewport" content="width=device-width, initial-scale=1" />
+	  <!-- <script src="/js/angular.js"></script> -->
+	  <script src="/js/angular.min.js"></script>
+	  <script src="/js/angular-route.js"></script>
+	 <!--  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script> -->
+	  <!--   <script src="/js/dirPagination.js"></script> -->
+	  <!-- <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" /> -->
+	  <!-- <script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  crossorigin="anonymous"></script> -->
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	   integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+	  crossorigin="anonymous"></script>
+	  
+	   <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
+ <script src="/js/controller.js"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="Style.css" rel="stylesheet"/>	  
+</head>
+<body>
+
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+ -->     
+    <!-- <script type="text/javascript">
+            var UserManagement = angular.module("UserManagement", []);
+         
+            //Controller Part
+            UserManagement.controller("UserManagementController", function($scope, $http) {
+         
+                //Initialize page with default data which is blank in this example
+               // $scope.employees = [];
+                $scope.form = {
+                    
+                    first_name : "",
+                    last_name : "",
+                    email : ""
+                };
+                
+                $scope.editCustomer = function(cust) {
+              	  
+                	
+                	
+                	//$scope.btnName="EditCustomer";
+                    $scope.form.first_name = cust.first_name;
+                  //  $scope.customerform.first_name=$scope.first_name;
+                    $scope.form.last_name = cust.last_name;
+                    $scope.form.email = cust.email;
+                    /* $scope.birthday=cust.birthday;
+                     $scope.phone = cust.email;
+                    $scope.zip_Code=cust.birthday;
+                    $scope.numberof_Purchases=cust.numberof_Purchases;
+                    $scope.company=cust.company;
+                    $scope.id = cust.id; */
+                    console.log("in editcust"+$scope.form.first_name+" "+cust.first_name);
+                };
+            });</script> -->
+
+<div class="container" ng-app="app">
+
+	
+	
+	<!-- <div ng-controller="postcontroller">
+		<form name="customerForm" ng-submit="submitForm()">
+	        <label>FirstName</label>
+	        <input type="text" name="firstname" class="form-control" ng-model="firstname"/>
+	        <input type="text" name="lastname" class="form-control" ng-model="lastname"/>
+	        <button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+		<p>{{postResultMessage}}</p>
+	</div>
+	
+	<div ng-controller="getcontroller">
+		<button id="btn-id" ng-click="getfunction()">Get All Customers</button>
+		
+		<ul>
+        	<li ng-repeat="customer in response">{{customer.firstname + " " + customer.lastname}}</li>
+    	</ul>
+		
+	</div> -->
+	
+
+
+
+
+    <!-- <div ng-controller="getCustomerController">
+		<button id="btn-id" ng-click="getCustomerFunction()">Get All Customers from DB</button>
+	 -->
+	 <!-- <div ng-controller="getCustomerController">
+		<button id="btn-id" ng-click="getCustomerFunction()">Get All Customers</button>	
+		<ul>
+        	<li ng-repeat="cust in response">
+        	{{cust.first_name + " " + cust.last_name+" "+cust.birthday+" "+cust.email+" "+cust.phone
+        	+" "+cust.Zip_Code+" "+cust.Numberof_Purchases+" "
+        	+cust.company}}</li>
+    	</ul>
+    	
+    	
+    	
+    	
+    	<table>
+                 <thead>
+                 
+                     <tr>
+                 <th>firstname</th>
+                 <th ng-click="sortData('firstname')">firstname
+                 <div ng-class="getSortClass('firstname')"></div>
+                         </th>
+                 <th>lastname</th>
+                  <th ng-click="sortData('lastname')">lastname
+                 <div ng-class="getSortClass('lastname')"></div>
+                         </th>
+                 <th>birthday</th>
+                  <th ng-click="sortData('birthday')">birthday
+                 <div ng-class="getSortClass('birthday')"></div>
+                         </th>
+                  <th>email</th>
+                  <th ng-click="sortData('email')">email
+                 <div ng-class="getSortClass('email')"></div>
+                         </th>
+                  
+                  <th ng-click="sortData('phone')">phone
+                 <div ng-class="getSortClass('phone')"></div></th>
+                  <th>phone</th>
+                  <th>Zip_Code</th>
+                   <th>Numberof_Purchases</th>
+                     <th>company</th>
+                     <th ng-click="sortData('company')">company
+                 <div ng-class="getSortClass('company')"></div>
+                         </th>
+                 </tr></thead> 
+                 <tbody>
+                     <tr ng-repeat="cust in response| orderBy:sortColumn:reverseSort | filter:searchText">
+                         <td>{{cust.first_name}}</td>
+                         <td>{{cust.last_name}}</td>
+                         <td>{{cust.birthday}}</td>
+                         <td>{{cust.email}}</td>
+                         <td>{{cust.phone}}</td>
+                         <td>{{cust.zip_Code}}</td>
+                         <td>{{cust.numberof_Purchases}}</td>
+                         <td>{{cust.company}}</td>
+                         
+                     </tr>
+                 </tbody>
+                 
+                 
+             </table>
+    	
+    	<ul>
+        	<li ng-repeat="cust in response">
+        	{{cust.first_name + " " + cust.last_name+" "+cust.birthday+" "+cust.email+" "+cust.phone
+        	+" "+cust.Zip_Code+" "+cust.Numberof_Purchases+" "
+        	+cust.company}}
+        	
+        	</li>
+    	</ul>
+		
+	</div> -->
+	<!-- <div class="container" ng-controller="AddCustomerController"> -->
+	<div class="container" ng-controller="getCustomerController">
+	
+	<!-- <a href="/apps"> AddCustomer</a> -->
+	
+	
+	
+	
+<button class = "btn btn-primary btn-lg" data-toggle = "modal" data-target = "#loginmodal">
+   AddCustomer
+</button>
+
+
+<div class="modal" id="loginmodal" tabindex="-1">
+<div class="modal-dialog">
+  <div class="modal-content">
+  
+
+   <div class="modal-header">
+
+  <button class="close" data-dismiss="modal">&times;</button>
+
+<h4 class="modal-title">Login</h4>
+</div>
+
+
+<div class="modal-body">
+
+ <!--  <form name="loginform">
+      <div class="form-group">
+          <label for="inputUserName">Un</label>
+           <input class="form-control" name="un" id="un" ng-model="un" type="text">
+           </input>
+      </div>
+
+       <div class="form-group">
+          <label for="inputPassword">Pwd</label>
+           <input class="form-control" placeholder="login pwd" ng-model="pwd" type="password"></input>
+      </div>
+  </form> -->
+  
+  <!-- <form name="custform" ng-submit="createCustomer()"> -->
+  <!-- <form name="custform"> -->
+  <form>
+  <div class="form-group">
+          <label for="first_name">FirstName</label>
+           <input class="form-control" name="first_name" id="first_name" ng-model="first_name" type="text">
+           </input>
+      </div>
+      
+       <div class="form-group">
+          <label for="last_name">LastName</label>
+           <input class="form-control" name="last_name" id="last_name" ng-model="last_name" type="text">
+           </input>
+      </div>
+
+	 <div class="form-group">
+          <label for="last_name">Birthday</label>
+           <input class="form-control" name="Birthday" id="Birthday" ng-model="Birthday" type="text">
+           </input>
+      </div>
+	
+	<div class="form-group">
+          <label for="email">Email</label>
+           <input class="form-control" name="email" id="email" ng-model="email" type="text">
+           </input>
+      </div>
+      
+      <div class="form-group">
+          <label for="phone">Phone</label>
+           <input class="form-control" name="phone" id="phone" ng-model="phone" type="text">
+           </input>
+      </div>
+       <div class="form-group">
+          <label for="zip_Code">ZipCode</label>
+           <input class="form-control" name="Zip_Code" id="Zip_Code" ng-model="Zip_Code" type="text">
+           </input>
+      </div>
+	
+	<div class="form-group">
+          <label for="numberof_Purchases">NoOfPurchases</label>
+           <input class="form-control" name="Numberof_Purchases" id="Numberof_Purchases" ng-model="Numberof_Purchases" type="text">
+           </input>
+      </div>
+      
+      <div class="form-group">
+          <label for="company">Company</label>
+           <input class="form-control" name="Company" id="Company" ng-model="Company" type="text">
+           </input>
+      </div>
+
+</form>  
+<p>{{ResultMessage}}</p>
+</div>
+
+<div class="modal-footer" >
+<button class="btn btn-primary" ng-click="addCustomer()">AddCustomer</button> 
+<!-- <input type="button" value="{{$scope.btnName}}" ng-click="addCustomer()"/> -->
+<button class="btn btn-primary" data-dismiss="modal">Close</button>
+</div>
+
+<!-- <div class="modal-footer">
+<button class="btn btn-primary" ng-click="add()">Login</button>
+<button class="btn btn-primary" data-dismiss="modal">Close</button>
+</div> -->
+
+      </div><!-- /.modal-content -->
+   </div><!-- /.modal-dialog -->
+   
+</div><!-- /.modal -->
+
+<!--<script>
+   $(function () { $('#loginmodal').modal({
+      keyboard: true
+   })});
+</script>-->
+
+
+
+<div class="modal" id="editmodal" tabindex="-1">
+<div class="modal-dialog">
+  <div class="modal-content">
+  
+
+   <div class="modal-header">
+
+  <button class="close" data-dismiss="modal">&times;</button>
+
+<h4 class="modal-title">Login</h4>
+</div>
+
+
+<div class="modal-body" >
+
+ <!--  <form name="loginform">
+      <div class="form-group">
+          <label for="inputUserName">Un</label>
+           <input class="form-control" name="un" id="un" ng-model="un" type="text">
+           </input>
+      </div>
+
+       <div class="form-group">
+          <label for="inputPassword">Pwd</label>
+           <input class="form-control" placeholder="login pwd" ng-model="pwd" type="password"></input>
+      </div>
+  </form> -->
+  
+  <!-- <form name="custform" ng-submit="createCustomer()"> -->
+ <!--   <form name="customerform">  -->
+ <form> 
+  <div class="form-group">
+           <label for="first_name">FirstName</label>
+           <input class="form-control" name="first_name" id="first_name" ng-model="form.firstName"  type="text" >
+         
+           </input>
+           
+          
+      </div>
+      
+       <div class="form-group">
+          <label for="last_name">LastName</label>
+           <input class="form-control" name="last_name" id="last_name" ng-model="form.last_name" type="text">
+           </input>
+      </div>
+
+	 <div class="form-group">
+          <label for="birthday">Birthday</label>
+           <input class="form-control" name="birthday" id="birthday" ng-model="birthday" type="text">
+           </input>
+      </div>
+	
+	<div class="form-group">
+          <label for="email">Email</label>
+           <input class="form-control" name="email" id="email" ng-model="form.email" type="text">
+           </input>
+      </div>
+      
+      <div class="form-group">
+          <label for="phone">Phone</label>
+           <input class="form-control" name="phone" id="phone" ng-model="phone" type="text">
+           </input>
+      </div>
+       <div class="form-group">
+          <label for="zip_Code">ZipCode</label>
+           <input class="form-control" name="zip_Code" id="zip_Code" ng-model="zip_Code" type="text">
+           </input>
+      </div>
+	
+	<div class="form-group">
+          <label for="numberof_Purchases">NoOfPurchases</label>
+           <input class="form-control" name="numberof_Purchases" id="numberof_Purchases" ng-model="numberof_Purchases" type="text">
+           </input>
+      </div>
+      
+      <div class="form-group">
+          <label for="company">Company</label>
+           <input class="form-control" name="company" id="company" ng-model="company" type="text">
+           </input>
+      </div>
+
+</form>  
+</div>
+
+<div class="modal-footer" >
+<button class="btn btn-primary" ng-click="addCustomer()">AddCustomer</button> 
+<!-- <input type="button" value="{{$scope.btnName}}" ng-click="addCustomer()"/> -->
+<button class="btn btn-primary" data-dismiss="modal">Close</button>
+</div>
+
+<!-- <div class="modal-footer">
+<button class="btn btn-primary" ng-click="add()">Login</button>
+<button class="btn btn-primary" data-dismiss="modal">Close</button>
+</div> -->
+
+      </div><!-- /.modal-content -->
+   </div><!-- /.modal-dialog -->
+   
+</div><!-- /.modal -->
+
+<!--<script>
+   $(function () { $('#loginmodal').modal({
+      keyboard: true
+   })});
+</script>-->
+	
+	
+	
+</div>
+	 
+	
+	 <div ng-controller="getCustomerController">
+		<button id="btn-id" ng-click="getCustomerFunction()">Get All Customers</button>	
+		
+    	Search:<input type="text" placeholder="Search Text" ng-model="searchText"/>
+             <br/><br/>
+    	<table border="5" >
+                 <thead>
+                 
+                     <tr>
+                 <!-- <th>firstname</th> -->
+                 <th ng-click="sortData('firstname')">firstname
+                 <div ng-class="getSortClass('firstname')"></div>
+                         </th>
+                         
+                          <th ng-click="sortData('lastname')">lastname
+                 <div ng-class="getSortClass('lastname')"></div>
+                         </th>
+                        <th ng-click="sortData('birthday')">birthday
+                 <div ng-class="getSortClass('birthday')"></div>
+                         </th> 
+                         <th ng-click="sortData('email')">email
+                 <div ng-class="getSortClass('email')"></div>
+                         </th>
+                         <th ng-click="sortData('phone')">phone
+                 <div ng-class="getSortClass('phone')"></div>
+                         </th>
+                 <!-- <th>lastname</th> -->
+               <!--   <th>birthday</th>
+                  <th>email</th>
+                  <th>phone</th> -->
+                  <th ng-click="sortData('zip_Code')">zip_Code
+                 <div ng-class="getSortClass('zip_Code')"></div>
+                         </th>
+                <!--   <th>Zip_Code</th> -->
+                <th ng-click="sortData('numberof_Purchases')">numberof_Purchases
+                 <div ng-class="getSortClass('numberof_Purchases')"></div>
+                         </th>
+                  <!--  <th>Numberof_Purchases</th> -->
+                   <th ng-click="sortData('company')">company
+                 <div ng-class="getSortClass('company')"></div>
+                         </th>
+                     <!-- <th>company</th> -->
+                     <th>Action</th>
+                 </tr></thead> 
+                 <!-- <tbody>
+                     <tr ng-repeat="cust in response| orderBy:sortColumn:reverseSort | filter:searchText"> 
+                     <tr dir-paginate="cust in response| orderBy:sortColumn:reverseSort | filter:searchText" | itemsPerPage:5">
+
+                     
+                         <td>{{cust.first_name}}</td>
+                         <td>{{cust.last_name}}</td>
+                         <td>{{cust.birthday}}</td>
+                         <td>{{cust.email}}</td>
+                         <td>{{cust.phone}}</td>
+                         <td>{{cust.zip_Code}}</td>
+                         <td>{{cust.numberof_Purchases}}</td>
+                         <td>{{cust.company}}</td>
+                         
+                     </tr>
+                 </tbody> -->
+                 
+                 
+                 <tbody>
+                     <tr ng-repeat="cust in response.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))| orderBy:sortColumn:reverseSort | filter:searchText"> 
+                     <!-- <tr dir-paginate="cust in response| orderBy:sortColumn:reverseSort | filter:searchText" | itemsPerPage:5"> -->
+
+                     
+                         <td>{{cust.first_name}}</td>
+                         <td>{{cust.last_name}}</td>
+                         <td>{{cust.birthday}}</td>
+                         <td>{{cust.email}}</td>
+                         <td>{{cust.phone}}</td>
+                         <td>{{cust.zip_Code}}</td>
+                         <td>{{cust.numberof_Purchases}}</td>
+                         <td>{{cust.company}}</td>
+                         
+                          <td>
+                          <!-- <a ng-click="editCustomer( cust )" class="button">Edit</a> --> 
+                          
+                          <button class = "btn btn-primary btn-lg" data-toggle = "modal" data-target = "#editmodal" ng-click="editCustomer( cust )">
+  Edit
+</button>|
+                           <a ng-click="deleteCustomer( cust )" class="button">Delete</a></td>
+                     </tr>
+                 </tbody>
+                 
+             </table>
+    	
+    	View <select ng-model="viewby" ng-change="setItemsPerPage(viewby)">
+    	<option>3</option><option>5</option><option>10</option><option>20</option><option>30</option>
+    	<option>40</option><option>50</option></select> records at a time.
+
+    <pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" class="pagination-sm" items-per-page="itemsPerPage"></pagination>
+    <pre>The selected page no: {{currentPage}}</pre>
+    <button class="btn btn-info" ng-click="setPage(3)">Set current page to: 3</button>
+    	
+    	<hr />
+    <h4>Pager</h4>
+    <pager total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage"></pager>
+
+    <hr />
+    <h4>Limit the maximum visible buttons</h4>
+    <pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" items-per-page="itemsPerPage"></pagination>
+    <pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></pagination>
+    <pre>Page: {{currentPage}} / {{numPages}}</pre>
+    	
+    	
+    	
+    	
+    	<!-- <ul>
+        	<li ng-repeat="cust in response">
+        	{{cust.first_name + " " + cust.last_name+" "+cust.birthday+" "+cust.email+" "+cust.phone
+        	+" "+cust.Zip_Code+" "+cust.Numberof_Purchases+" "
+        	+cust.company}}
+        	
+        	</li>
+    	</ul> -->
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+</div>
+</body>
+</html>

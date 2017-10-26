@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+	  <title>Spring Boot - Angularjs Example</title>
+	  <meta charset="utf-8" />
+	  <meta name="viewport" content="width=device-width, initial-scale=1" />
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script>
+	  <script src="/js/customers.js"></script>
+	  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
+	  
+</head>
+<body>
+
+<div class="container" ng-app="apps">
+
+	 <div ng-controller="getCustomerController">
+		<button id="btn-id" ng-click="getCustomerFunction()">Get All Customers</button>	
+		<!-- <ul>
+        	<li ng-repeat="cust in response">
+        	{{cust.first_name + " " + cust.last_name+" "+cust.birthday+" "+cust.email+" "+cust.phone
+        	+" "+cust.Zip_Code+" "+cust.Numberof_Purchases+" "
+        	+cust.company}}</li>
+    	</ul> -->
+    	
+    	<table>
+                 <thead>
+                 
+                     <tr>
+                 <th>firstname</th> 
+                 <!-- <th ng-click="sortData('firstname')">name
+                 <div ng-class="getSortClass('firstname')"></div>
+                         </th> -->
+                 <th>lastname</th>
+                 <th>birthday</th>
+                  <th>email</th>
+                  <th>phone</th>
+                  <th>Zip_Code</th>
+                   <th>Numberof_Purchases</th>
+                     <th>company</th>
+                 </tr></thead> 
+                 <tbody>
+                     <tr ng-repeat="cust in response">
+                         <td>{{cust.first_name}}</td>
+                         <td>{{cust.last_name}}</td>
+                         <td>{{cust.birthday}}</td>
+                         <td>{{cust.email}}</td>
+                         <td>{{cust.phone}}</td>
+                         <td>{{cust.Zip_Code|number:"2"}}</td>
+                         <td>{{cust.Numberof_Purchases}}</td>
+                         <td>{{cust.company}}</td>
+                     </tr>
+                 </tbody>
+                 
+                 
+             </table>
+    	
+    	<!-- <ul>
+        	<li ng-repeat="cust in response">
+        	{{cust.first_name + " " + cust.last_name+" "+cust.birthday+" "+cust.email+" "+cust.phone
+        	+" "+cust.Zip_Code+" "+cust.Numberof_Purchases+" "
+        	+cust.company}}
+        	
+        	</li>
+    	</ul> -->
+		
+	</div>
+</div>
+</body>
+</html>
